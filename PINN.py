@@ -13,8 +13,9 @@ def tanh(x): return np.tanh(x)
 def d_tanh(x): return 1 - np.tanh(x)**2
 def dd_tanh(x): return -2 * np.tanh(x) * (1 - np.tanh(x)**2)
 
-def simple_init(size):
+def init(size):
     return np.random.randn(*size) 
+
 class SGD_Momentum:
     def __init__(self, params, lr=0.001, gamma=0.9):
         self.params = params
@@ -31,9 +32,9 @@ class SGD_Momentum:
         self.params = updated_params
         return updated_params
 
-w = simple_init((n_hidden, 1))
+w = init((n_hidden, 1))
 b = np.zeros((n_hidden, 1))
-v = simple_init((1, n_hidden))
+v = init((1, n_hidden))
 
 optimizer = SGD_Momentum([w, b, v], lr=lr, gamma=gamma)
 

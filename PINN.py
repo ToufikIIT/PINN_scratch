@@ -47,7 +47,6 @@ def forward(x_in, params):
     y_x = (v_curr * w_curr.T) @ sigma_p
     return y, y_x, z, h, sigma_p
 
-loss_history = []
 for epoch in range(epochs):
     current_w, current_b, current_v = optimizer.params
     
@@ -90,8 +89,6 @@ for epoch in range(epochs):
     optimizer.step([dw_total, db_total, dv_total])
     
     total_loss = loss_pde + (bc_weight * loss_bc)
-    loss_history.append(total_loss)
-
     if epoch % 5000 == 0:
         print(f"Epoch {epoch}: Loss {total_loss:.5f}")
 

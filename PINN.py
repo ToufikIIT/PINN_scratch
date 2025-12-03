@@ -14,8 +14,7 @@ def d_tanh(x): return 1 - np.tanh(x)**2
 def dd_tanh(x): return -2 * np.tanh(x) * (1 - np.tanh(x)**2)
 
 def simple_init(size):
-    return np.random.randn(*size) * 0.2
-
+    return np.random.randn(*size) 
 class SGD_Momentum:
     def __init__(self, params, lr=0.001, gamma=0.9):
         self.params = params
